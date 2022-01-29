@@ -47,15 +47,16 @@ const Slider = styled.div`
 const Row = styled(motion.div)`
   display: grid;
   gap: 5px;
+  padding: 0 60px;
   grid-template-columns: repeat(6, 1fr);
   position: absolute;
   width: 100%;
 `;
 
-const Box = styled(motion.div)<{ bgPhoto: string }>`
+const Box = styled(motion.div)<{ photo: string }>`
   background-color: white;
   height: 200px;
-  background-image: url(${(props) => props.bgPhoto});
+  background-image: url(${(props) => props.photo});
   background-size: cover;
   background-position: center center;
   cursor: pointer;
@@ -96,7 +97,6 @@ const BigMovie = styled(motion.div)`
   left: 0;
   right: 0;
   margin: 0 auto;
-
   border-radius: 15px;
   overflow: hidden;
   background-color: ${(props) => props.theme.black.lighter};
@@ -225,7 +225,7 @@ const Home = () => {
                       initial="normal"
                       variants={boxVariants}
                       transition={{ type: "tween" }}
-                      bgPhoto={makeImagePath(movie.backdrop_path, "w500")}
+                      photo={makeImagePath(movie.backdrop_path, "w500")}
                       onClick={() => onBoxClicked(movie.id)}
                     >
                       <Info variants={infoVariants}>
